@@ -1,0 +1,82 @@
+customCommands:
+  # === localBranches context ===
+  - key: "S"
+    description: "gs: sync repo"
+    command: "gs repo sync"
+    context: "localBranches"
+    loadingText: "Syncing repo..."
+    output: terminal
+  - key: "R"
+    description: "gs: restack all branches"
+    command: "gs stack restack"
+    context: "localBranches"
+    loadingText: "Restacking..."
+    output: terminal
+  - key: "P"
+    description: "gs: submit stack (create/update MRs)"
+    command: "gs stack submit"
+    context: "localBranches"
+    loadingText: "Submitting stack..."
+    output: terminal
+  - key: "n"
+    description: "gs: create stacked branch"
+    command: "gs branch create {{.Form.BranchName}}"
+    context: "localBranches"
+    prompts:
+      - type: "input"
+        title: "Branch name"
+        key: "BranchName"
+  - key: "T"
+    description: "gs: track current branch"
+    command: "gs branch track"
+    context: "localBranches"
+    loadingText: "Tracking branch..."
+  - key: "U"
+    description: "gs: untrack branch"
+    command: "gs branch untrack"
+    context: "localBranches"
+    loadingText: "Untracking branch..."
+  - key: "l"
+    description: "gs: stack log (short)"
+    command: "gs log short"
+    context: "localBranches"
+    output: terminal
+  - key: "L"
+    description: "gs: stack log (long)"
+    command: "gs log long"
+    context: "localBranches"
+    output: terminal
+  # === commits context ===
+  - key: "C"
+    description: "gs: create commit"
+    command: "gs commit create"
+    context: "commits"
+    output: terminal
+  - key: "A"
+    description: "gs: amend commit"
+    command: "gs commit amend"
+    context: "commits"
+    output: terminal
+  # === gs menu for less common commands ===
+  - key: "G"
+    description: "gs: more commands..."
+    context: "localBranches"
+    prompts:
+      - type: "menu"
+        title: "git-spice commands"
+        key: "GsCommand"
+        options:
+          - name: "upstack restack"
+            value: "gs upstack restack"
+          - name: "downstack submit"
+            value: "gs downstack submit"
+          - name: "upstack submit"
+            value: "gs upstack submit"
+          - name: "branch submit"
+            value: "gs branch submit"
+          - name: "branch rename"
+            value: "gs branch rename"
+          - name: "branch delete"
+            value: "gs branch delete"
+    command: "{{.Form.GsCommand}}"
+    output: terminal

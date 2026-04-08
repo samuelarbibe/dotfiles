@@ -1,6 +1,6 @@
 {
   "AstroNvim": { "branch": "main", "commit": "7fd58328e2bc91d5cad606ee48fdf924fca6ea3e" },
-  "LuaSnip": { "branch": "master", "commit": "5a1e39223db9a0498024a77b8441169d260c8c25" },
+  "LuaSnip": { "branch": "master", "commit": "642b0c595e11608b4c18219e93b88d7637af27bc" },
   "aerial.nvim": { "branch": "master", "commit": "5c4e2da4486da5f9b798ea9a0f1fc5c6bcd3d9cf" },
   "astrocommunity": { "branch": "main", "commit": "175a21dc270a2abd65b7059ddb7ff166212d1e0f" },
   "astrocore": { "branch": "main", "commit": "5052189882442cf71e04ad2d5472ee31bfe6a5cf" },
@@ -24,7 +24,7 @@
   "mason-tool-installer.nvim": { "branch": "main", "commit": "443f1ef8b5e6bf47045cb2217b6f748a223cf7dc" },
   "mason.nvim": { "branch": "main", "commit": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65" },
   "mini.icons": { "branch": "main", "commit": "397ed3807e96b59709ef3292f0a3e253d5c1dc0a" },
-  "minuet-ai.nvim": { "branch": "main", "commit": "75e84161c8297e2c4ca649060c0b2c709041fb57" },
+  "minuet-ai.nvim": { "branch": "main", "commit": "33c6f4ad809bb28347c275cffc3e5700057d1c3c" },
   "neo-tree.nvim": { "branch": "main", "commit": "84c75e7a7e443586f60508d12fc50f90d9aee14e" },
   "neoconf.nvim": { "branch": "main", "commit": "bbe36f4d60ed096282f564ddae4e781e420a8270" },
   "none-ls.nvim": { "branch": "main", "commit": "3c206dfedf5f1385e9d29f85ffaec7874358592a" },

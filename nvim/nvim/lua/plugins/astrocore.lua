@@ -16,6 +16,23 @@ return {
       underline = true,
       severity_sort = true,
     },
+    mappings = {
+      v = {
+        ["<Leader>r"] = {
+          function()
+            -- yank selection into register
+            vim.cmd('noautocmd normal! "vy')
+            local text = vim.fn.getreg("v")
+            -- escape for \V (very nomagic): only backslash and separator need escaping
+            local escaped = vim.fn.escape(text, [[\/]])
+            -- populate command line with substitution
+            local left = vim.api.nvim_replace_termcodes("<Left>", true, false, true)
+            vim.api.nvim_feedkeys(":%s/\\V" .. escaped .. "//gI" .. left .. left .. left, "n", false)
+          end,
+          desc = "Search & replace selection",
+        },
+      },
+    },
     options = {
       opt = {
         relativenumber = true,

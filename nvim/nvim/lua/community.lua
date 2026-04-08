@@ -10,4 +10,5 @@ return {
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.yaml" },
+  { import = "astrocommunity.recipes.auto-session-restore" },
 }
