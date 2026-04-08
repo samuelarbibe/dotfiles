@@ -15,6 +15,7 @@ Personal configuration files managed with [GNU Stow](https://www.gnu.org/softwar
 ### Prerequisites
 
 - [GNU Stow](https://www.gnu.org/software/stow/) (`brew install stow`)
+- [lazygit](https://github.com/jesseduffield/lazygit) (`brew install lazygit`)
 
 ### Install
 
