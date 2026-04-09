@@ -1,3 +1,5 @@
+os:
+  editPreset: "nvim-remote"
 customCommands:
   # === localBranches context ===
   - key: "S"
