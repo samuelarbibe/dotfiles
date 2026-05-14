@@ -8,7 +8,7 @@ Includes config for [git-spice (gs)](https://github.com/abhinav/git-spice) and [
 
 | Package | Contents | Target |
 |---------|----------|--------|
-| `nvim` | [AstroNvim](https://github.com/AstroNvim/AstroNvim) v5+ config (Neovim v0.12.2) | `~/.config/nvim` |
+| `nvim` | [AstroNvim](https://github.com/AstroNvim/AstroNvim) v6 config (Neovim v0.12.2) | `~/.config/nvim` |
 | `ghostty` | [Ghostty](https://ghostty.org/) terminal config | `~/.config/ghostty` |
 | `tmux` | tmux config (XDG-compliant, requires tmux 3.1+) | `~/.config/tmux` |
 | `lazygit` | [lazygit](https://github.com/jesseduffield/lazygit) config with [gs](https://github.com/abhinav/git-spice) keybindings | `~/Library/Application Support/lazygit` |
