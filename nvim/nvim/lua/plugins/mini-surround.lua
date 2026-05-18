@@ -10,16 +10,6 @@ return {
     version = false,
     lazy = false,
     opts = {
-      mappings = {
-        add = "ys",
-        delete = "ds",
-        find = "",
-        find_left = "",
-        highlight = "",
-        replace = "cs",
-        suffix_last = "",
-        suffix_next = "",
-      },
       search_method = "cover_or_next",
     },
     config = function(_, opts)
