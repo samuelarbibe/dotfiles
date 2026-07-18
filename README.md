@@ -11,6 +11,7 @@ Includes config for [git-spice (gs)](https://github.com/abhinav/git-spice) and [
 | `nvim` | [AstroNvim](https://github.com/AstroNvim/AstroNvim) v6 config (Neovim v0.12.2) | `~/.config/nvim` |
 | `ghostty` | [Ghostty](https://ghostty.org/) terminal config | `~/.config/ghostty` |
 | `tmux` | tmux config (XDG-compliant, requires tmux 3.1+) | `~/.config/tmux` |
+| `herdr` | [herdr](https://herdr.dev) terminal workspace manager for AI coding agents | `~/.config/herdr` |
 | `lazygit` | [lazygit](https://github.com/jesseduffield/lazygit) config with [gs](https://github.com/abhinav/git-spice) keybindings | `~/Library/Application Support/lazygit` |
 
 ## Setup
@@ -18,7 +19,7 @@ Includes config for [git-spice (gs)](https://github.com/abhinav/git-spice) and [
 ### Prerequisites
 
 ```sh
-brew install stow neovim ghostty tmux lazygit git-spice
+brew install stow neovim ghostty tmux lazygit git-spice herdr
 ```
 
 ### Install
@@ -28,11 +29,14 @@ git clone https://github.com/samuelarbibe/dotfiles ~/.config/dotfiles
 cd ~/.config/dotfiles
 
 # ~/.config packages
-stow -t ~/.config nvim ghostty tmux
+stow -t ~/.config nvim ghostty tmux herdr
 
 # ~/Library/Application Support packages (macOS)
 stow -t ~/Library/Application\ Support lazygit
 ```
+
+> The `herdr` package only tracks `config.toml`. Its runtime files (logs, sockets,
+> `session.json`) live alongside it in `~/.config/herdr` and are left untouched by stow.
 
 ### Uninstall
 
@@ -40,7 +44,7 @@ stow -t ~/Library/Application\ Support lazygit
 cd ~/.config/dotfiles
 
 # ~/.config packages
-stow -t ~/.config -D nvim ghostty tmux
+stow -t ~/.config -D nvim ghostty tmux herdr
 
 # ~/Library/Application Support packages (macOS)
 stow -t ~/Library/Application\ Support -D lazygit

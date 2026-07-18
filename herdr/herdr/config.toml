@@ -1,0 +1,27 @@
+# herdr configuration
+# Symlinked to ~/.config/herdr/config.toml via GNU Stow (see dotfiles README).
+
+onboarding = false
+
+[theme]
+name = "one-dark"
+
+[keys]
+# Navigate spaces with j/k in the workspace picker (prefix+w), like tmux's session view.
+# j/k are freed from pane up/down so spaces win unambiguously; panes still move with h/l (and arrows).
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
+navigate_pane_up = ""
+navigate_pane_down = ""
+
+[ui]
+agent_panel_scope = "all"
+agent_panel_sort = "spaces"
+pane_gaps = false
+
+# Add the AI session name (agent-reported terminal title) as its own row per agent.
+[ui.sidebar.agents]
+rows = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"], ["agent"]]
+
+[ui.toast]
+delivery = "terminal"
