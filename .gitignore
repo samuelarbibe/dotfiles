@@ -1,1 +1,4 @@
 debug.log
+
+# TPM-managed tmux plugins (installed via `prefix + I`, not tracked here)
+tmux/tmux/plugins/
