@@ -1,14 +1,33 @@
 {
-  "version": 1,
   "hooks": {
-    "beforeSubmitPrompt": [
-      { "command": "~/.cursor/hooks/cursor_audit.sh" },
-      { "command": "~/.cursor/hooks/tmux-agent-state.sh" }
+    "afterShellExecution": [
+      {
+        "command": "~/.cursor/hooks/cursor_audit.sh"
+      }
     ],
-    "beforeShellExecution": [{ "command": "~/.cursor/hooks/cursor_audit.sh" }],
-    "afterShellExecution": [{ "command": "~/.cursor/hooks/cursor_audit.sh" }],
+    "beforeShellExecution": [
+      {
+        "command": "~/.cursor/hooks/cursor_audit.sh"
+      }
+    ],
+    "beforeSubmitPrompt": [
+      {
+        "command": "~/.cursor/hooks/cursor_audit.sh"
+      },
+      {
+        "command": "~/.cursor/hooks/tmux-agent-state.sh"
+      }
+    ],
+    "sessionStart": [
+      {
+        "command": "bash '/Users/sarbibe/.cursor/herdr-agent-state.sh' session"
+      }
+    ],
     "stop": [
-      { "command": "~/.cursor/hooks/tmux-agent-state.sh" }
+      {
+        "command": "~/.cursor/hooks/tmux-agent-state.sh"
+      }
     ]
-  }
+  },
+  "version": 1
 }
