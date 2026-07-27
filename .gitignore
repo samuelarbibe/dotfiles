@@ -1,4 +1,8 @@
-debug.log
+# Log files
+*.log
+
+# herdr runtime state (lives alongside stowed config in ~/.config/herdr)
+**/session.json
 
 # TPM-managed tmux plugins (installed via `prefix + I`, not tracked here)
 tmux/tmux/plugins/
