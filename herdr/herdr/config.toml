@@ -17,7 +17,6 @@ navigate_pane_up = ""
 navigate_pane_down = ""
 
 [ui]
-agent_panel_scope = "all"
 agent_panel_sort = "priority"
 pane_gaps = false
 
