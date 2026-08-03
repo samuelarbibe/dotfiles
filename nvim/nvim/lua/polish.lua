@@ -10,13 +10,28 @@ local function get_git_head()
   return vim.v.shell_error == 0 and vim.trim(result) or nil
 end
 
+-- Restart the TS LSP without relying on the :LspRestart user command, which
+-- isn't guaranteed to be registered when this autocmd fires.
+local function restart_ts_lsp()
+  local get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
+  for _, client in ipairs(get_clients({ name = "vtsls" })) do
+    local bufs = vim.lsp.get_buffers_by_client_id(client.id)
+    client.stop()
+    vim.defer_fn(function()
+      for _, bufnr in ipairs(bufs) do
+        if vim.api.nvim_buf_is_valid(bufnr) then vim.api.nvim_exec_autocmds("FileType", { buffer = bufnr }) end
+      end
+    end, 500)
+  end
+end
+
 vim.api.nvim_create_autocmd("FocusGained", {
   callback = function()
     local head = get_git_head()
     if last_git_head and head and head ~= last_git_head then
       vim.cmd("checktime")
-      vim.cmd("LspRestart vtsls")
-      vim.notify("Git ref changed — restarted TS LSP", vim.log.levels.INFO)
+      restart_ts_lsp()
+      vim.notify("Git ref changed - restarted TS LSP", vim.log.levels.INFO)
     end
     last_git_head = head
   end,

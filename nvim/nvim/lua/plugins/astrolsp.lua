@@ -40,6 +40,17 @@ local function goto_definition()
   }
 end
 
+-- Show references in the snacks picker (same fuzzy-find UI as searching) so the
+-- list closes on selection instead of lingering in the quickfix window.
+local function goto_references()
+  local ok, snacks = pcall(require, "snacks")
+  if ok and snacks.picker then
+    snacks.picker.lsp_references()
+  else
+    vim.lsp.buf.references()
+  end
+end
+
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
@@ -51,6 +62,11 @@ return {
           goto_definition,
           desc = "Go to definition",
           cond = "textDocument/definition",
+        },
+        gr = {
+          goto_references,
+          desc = "References of current symbol",
+          cond = "textDocument/references",
         },
       },
     },
