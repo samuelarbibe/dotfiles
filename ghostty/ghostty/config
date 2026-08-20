@@ -1,4 +1,6 @@
-theme = Atom One Dark
+# Custom theme in themes/one-dark, matched to nvim (onedarkpro) and herdr.
+# Ghostty's bundled "Atom One Dark" uses a different background (#21252b).
+theme = one-dark
 font-size = 16
 
 # Claude Code: Shift+Enter inserts a newline instead of submitting the prompt.

@@ -51,6 +51,12 @@ launchctl load ~/Library/LaunchAgents/dev.herdr.cpu-reporter.plist
 > restores herdr's default title on exit. Tune it with `HERDR_CPU_INTERVAL`
 > (seconds).
 >
+> **One Dark palette.** Three packages theme themselves independently and must be
+> kept in sync: `nvim` (onedarkpro.nvim `onedark`), `herdr` (`[theme] name = "one-dark"`)
+> and `ghostty` (`themes/one-dark`, a local theme — the bundled *Atom One Dark* uses
+> Atom's gutter shade `#21252b` instead of the editor background `#282c34`). The
+> shared values are `bg #282c34`, `fg #abb2bf`, `gray #5c6370`, `selection #414858`.
+>
 > `GITLAB_HOST` is exported in `~/.zshrc` alongside `GITLAB_TOKEN` so `glab`
 > defaults to the self-hosted `code.pan.run` instance. Note that `GITLAB_TOKEN`
 > overrides glab's stored credentials for *every* host, so gitlab.com calls fail

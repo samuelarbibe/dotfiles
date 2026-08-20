@@ -1,0 +1,32 @@
+# One Dark — kept in sync with the other One Dark configs in this repo:
+#   nvim   → onedarkpro.nvim "onedark" (bg #282c34, gray #5c6370, selection #414858)
+#   herdr  → [theme] name = "one-dark" (same palette)
+#
+# Ghostty's bundled "Atom One Dark" is Atom's *gutter* shade (#21252b) with a
+# generic #767676 bright-black, so nvim/herdr panes painted a visibly different
+# background and dimmed text than the terminal around them. This theme uses the
+# canonical One Dark editor background instead.
+
+palette = 0=#282c34
+palette = 1=#e06c75
+palette = 2=#98c379
+palette = 3=#e5c07b
+palette = 4=#61afef
+palette = 5=#c678dd
+palette = 6=#56b6c2
+palette = 7=#abb2bf
+palette = 8=#5c6370
+palette = 9=#e06c75
+palette = 10=#98c379
+palette = 11=#e5c07b
+palette = 12=#61afef
+palette = 13=#c678dd
+palette = 14=#56b6c2
+palette = 15=#abb2bf
+
+background = #282c34
+foreground = #abb2bf
+cursor-color = #abb2bf
+cursor-text = #282c34
+selection-background = #414858
+selection-foreground = #abb2bf
