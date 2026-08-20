@@ -1,2 +1,5 @@
 theme = Atom One Dark
 font-size = 16
+
+# Claude Code: Shift+Enter inserts a newline instead of submitting the prompt.
+keybind = shift+enter=text:\n

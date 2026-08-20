@@ -4,5 +4,11 @@
 # herdr runtime state (lives alongside stowed config in ~/.config/herdr)
 **/session.json
 
-# TPM-managed tmux plugins (installed via `prefix + I`, not tracked here)
-tmux/tmux/plugins/
+# Agent scratch: dumped here when a coding agent runs with this repo as its
+# working directory. Nothing under these is stowed config.
+.playwright-mcp/
+dc-results.json
+
+# Skills installed from git by the skills tooling, not stowed config.
+.agents/
+skills-lock.json

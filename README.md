@@ -10,7 +10,6 @@ Includes config for [git-spice (gs)](https://github.com/abhinav/git-spice) and [
 |---------|----------|--------|
 | `nvim` | [AstroNvim](https://github.com/AstroNvim/AstroNvim) v6 config (Neovim v0.12.2) | `~/.config/nvim` |
 | `ghostty` | [Ghostty](https://ghostty.org/) terminal config | `~/.config/ghostty` |
-| `tmux` | tmux config (XDG-compliant, requires tmux 3.1+) | `~/.config/tmux` |
 | `herdr` | [herdr](https://herdr.dev) terminal workspace manager for AI coding agents | `~/.config/herdr` |
 | `launchd` | macOS launch agents (herdr CPU-load reporter) | `~/Library/LaunchAgents` |
 | `lazygit` | [lazygit](https://github.com/jesseduffield/lazygit) config with [gs](https://github.com/abhinav/git-spice) keybindings | `~/Library/Application Support/lazygit` |
@@ -20,7 +19,7 @@ Includes config for [git-spice (gs)](https://github.com/abhinav/git-spice) and [
 ### Prerequisites
 
 ```sh
-brew install stow neovim ghostty tmux lazygit git-spice herdr
+brew install stow neovim ghostty lazygit git-spice herdr glab
 ```
 
 ### Install
@@ -30,7 +29,7 @@ git clone https://github.com/samuelarbibe/dotfiles ~/.config/dotfiles
 cd ~/.config/dotfiles
 
 # ~/.config packages
-stow -t ~/.config nvim ghostty tmux herdr
+stow -t ~/.config nvim ghostty herdr
 
 # ~ packages (macOS)
 stow -t ~ launchd
@@ -51,6 +50,11 @@ launchctl load ~/Library/LaunchAgents/dev.herdr.cpu-reporter.plist
 > the tabline instead of the sidebar. The `launchd` package runs it at login; it
 > restores herdr's default title on exit. Tune it with `HERDR_CPU_INTERVAL`
 > (seconds).
+>
+> `GITLAB_HOST` is exported in `~/.zshrc` alongside `GITLAB_TOKEN` so `glab`
+> defaults to the self-hosted `code.pan.run` instance. Note that `GITLAB_TOKEN`
+> overrides glab's stored credentials for *every* host, so gitlab.com calls fail
+> with a 401 until it is unset.
 
 ### Uninstall
 
@@ -61,7 +65,7 @@ cd ~/.config/dotfiles
 launchctl unload ~/Library/LaunchAgents/dev.herdr.cpu-reporter.plist
 
 # ~/.config packages
-stow -t ~/.config -D nvim ghostty tmux herdr
+stow -t ~/.config -D nvim ghostty herdr
 
 # ~ packages (macOS)
 stow -t ~ -D launchd
