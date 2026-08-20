@@ -25,8 +25,5 @@ show_agent_labels_on_pane_borders = true
 [ui.sidebar.agents]
 rows = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"], ["agent"]]
 
-# System CPU load lives in the outer terminal window title (Ghostty's tab bar),
-# set by cpu-reporter.sh (run via the launchd package) - not in the sidebar.
-
 [ui.toast]
 delivery = "terminal"
