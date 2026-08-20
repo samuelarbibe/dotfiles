@@ -14,9 +14,9 @@ end
 -- isn't guaranteed to be registered when this autocmd fires.
 local function restart_ts_lsp()
   local get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
-  for _, client in ipairs(get_clients({ name = "vtsls" })) do
+  for _, client in ipairs(get_clients({ name = "tsc" })) do
     local bufs = vim.lsp.get_buffers_by_client_id(client.id)
-    client.stop()
+    client:stop()
     vim.defer_fn(function()
       for _, bufnr in ipairs(bufs) do
         if vim.api.nvim_buf_is_valid(bufnr) then vim.api.nvim_exec_autocmds("FileType", { buffer = bufnr }) end
