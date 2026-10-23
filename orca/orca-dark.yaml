@@ -1,0 +1,29 @@
+# Orca's dark-mode palette as a terminal theme: --editor-surface background,
+# Orca's neutral grays and the Tailwind 400/300 accents Orca's UI uses.
+# Import in Orca: Settings → Terminal → Appearance → Import Warp theme →
+# Choose File, then pick "Orca Dark" as the dark theme.
+name: Orca Dark
+accent: '#e5e5e5'
+cursor: '#e5e5e5'
+background: '#1e1e1e'
+foreground: '#fafafa'
+details: darker
+terminal_colors:
+  normal:
+    black: '#262626'
+    red: '#ff6568'
+    green: '#00d294'
+    yellow: '#fac800'
+    blue: '#54a2ff'
+    magenta: '#a685ff'
+    cyan: '#00d3f2'
+    white: '#d4d4d4'
+  bright:
+    black: '#737373'
+    red: '#ffa3a3'
+    green: '#5ee9b5'
+    yellow: '#ffe02a'
+    blue: '#90c5ff'
+    magenta: '#c4b4ff'
+    cyan: '#53eafd'
+    white: '#fafafa'

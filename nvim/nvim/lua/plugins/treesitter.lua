@@ -14,7 +14,7 @@ local ensure_installed = {
   "bash", "c", "comment", "css", "diff", "dockerfile", "gitcommit",
   "go", "gomod", "gosum", "gowork", "html", "javascript", "json",
   "lua", "luadoc", "markdown", "markdown_inline", "python", "query",
-  "regex", "tsx", "typescript", "vim", "vimdoc", "yaml",
+  "regex", "tsx", "typescript", "vim", "vimdoc", "yaml", "latex",
 }
 
 -- `select` module: capture group per key (mirrors AstroNvim's master defaults).

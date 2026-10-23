@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+# ws - herdr-style workspaces on tmux.
+#
+#   ws                         open the sidebar UI attached to the tmux server
+#   ws sidebar-toggle <tty>    show/hide the sidebar of the client on <tty>
+#   ws jump <tty>              focus the agent that needs you most
+#   ws pi-save | pi-restore    tmux-resurrect hooks: bring pi sessions back
+#
+# WS_SOCKET selects a tmux socket name other than the default (for testing).
+
+set -euo pipefail
+
+DIR="$HOME/.config/tmux"
+SOCK_DIR="${TMUX_TMPDIR:-/tmp}/tmux-$(id -u)"
+RESURRECT_DIR="$HOME/.local/share/tmux/ws-resurrect"
+
+main_tmux() {
+  if [[ -n ${WS_SOCKET:-} ]]; then tmux -L "$WS_SOCKET" "$@"; else tmux "$@"; fi
+}
+
+die() { echo "ws: $*" >&2; exit 1; }
+
+remove_dead_ui_sockets() {
+  local sock
+  for sock in "$SOCK_DIR"/ws-ui-*; do
+    [[ -S $sock ]] && ! tmux -L "$(basename "$sock")" has-session 2>/dev/null && rm -f "$sock"
+  done
+  return 0
+}
+
+launch() {
+  [[ -z ${TMUX:-} ]] || die "already inside tmux; run ws from a plain terminal tab"
+  remove_dead_ui_sockets
+  main_tmux has-session 2>/dev/null || main_tmux new-session -d -s main -c "$PWD"
+  main_tmux set -g @ghostty_tty "$(tty)"
+
+  local ui="ws-ui-$$" attach_cmd="tmux attach"
+  [[ -n ${WS_SOCKET:-} ]] && attach_cmd="tmux -L $WS_SOCKET attach"
+  tmux -L "$ui" -f "$DIR/ui.conf" new-session -d -s ui -x "$(tput cols)" -y "$(tput lines)" \
+    "env -u TMUX $attach_cmd"
+  local sidebar
+  sidebar=$(tmux -L "$ui" split-window -hbf -l 32 -P -F '#{pane_id}' \
+    "WS_UI=$ui WS_SOCKET=${WS_SOCKET:-} python3 $DIR/bin/sidebar.py")
+  tmux -L "$ui" set -g @sidebar "$sidebar"
+  tmux -L "$ui" select-pane -R
+  exec tmux -L "$ui" attach -t ui
+}
+
+ui_pane_for_tty() {
+  local tty=$1 sock name pane
+  for sock in "$SOCK_DIR"/ws-ui-*; do
+    [[ -S $sock ]] || continue
+    name=$(basename "$sock")
+    pane=$(tmux -L "$name" list-panes -a -F '#{pane_tty} #{pane_id}' 2>/dev/null |
+      awk -v t="$tty" '$1 == t { print $2 }')
+    [[ -n $pane ]] && { echo "$name $pane"; return; }
+  done
+  return 1
+}
+
+sidebar_toggle() {
+  local found
+  found=$(ui_pane_for_tty "$1") || { main_tmux display "no sidebar: start tmux with ws"; return; }
+  set -- $found
+  tmux -L "$1" resize-pane -Z -t "$2"
+}
+
+jump() {
+  local client=$1 target
+  target=$(main_tmux list-panes -a -F '#{@agent_state} #{pane_id}' |
+    awk '$1 == "blocked" { print 1, $2 } $1 == "done" { print 2, $2 }' | sort -n | head -1 | cut -d' ' -f2)
+  [[ -n $target ]] || { main_tmux display "no agent needs you"; return; }
+  main_tmux switch-client -c "$client" -t "$target"
+  main_tmux select-window -t "$target"
+  main_tmux select-pane -t "$target"
+}
+
+pi_save() {
+  mkdir -p "$RESURRECT_DIR"
+  main_tmux list-panes -a -F '#{session_name}:#{window_index}.#{pane_index}	#{@agent_session}' |
+    awk -F'\t' '$2 != ""' > "$RESURRECT_DIR/pi-sessions.tsv"
+}
+
+pi_restore() {
+  local file="$RESURRECT_DIR/pi-sessions.tsv" target session
+  [[ -f $file ]] || return 0
+  while IFS=$'\t' read -r target session; do
+    [[ -f $session ]] && main_tmux send-keys -t "$target" "pi --session '$session'" Enter
+  done < "$file"
+}
+
+case "${1:-}" in
+  "") launch ;;
+  sidebar-toggle) sidebar_toggle "${2:?tty}" ;;
+  jump) jump "${2:?tty}" ;;
+  pi-save) pi_save ;;
+  pi-restore) pi_restore ;;
+  *) die "unknown command: $1" ;;
+esac

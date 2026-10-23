@@ -1,0 +1,13 @@
+pdf-engine: pdflatex
+
+include-in-header:
+  - macros.tex
+
+variables:
+  geometry: margin=1in
+  fontsize: 11pt
+  colorlinks: true
+  linkcolor: NavyBlue
+
+standalone: true
+number-sections: true

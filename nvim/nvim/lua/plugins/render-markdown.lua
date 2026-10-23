@@ -7,6 +7,8 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     ft = { "markdown", "markdown.mdx" },
-    opts = {},
+    opts = {
+      latex = { enabled = false },
+    },
   },
 }

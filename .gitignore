@@ -12,3 +12,7 @@ dc-results.json
 # Skills installed from git by the skills tooling, not stowed config.
 .agents/
 skills-lock.json
+
+# Python bytecode cache
+__pycache__/
+
