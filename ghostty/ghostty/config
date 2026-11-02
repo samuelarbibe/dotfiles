@@ -1,6 +1,6 @@
-# Custom theme in themes/one-dark, matched to nvim (onedarkpro) and herdr.
+# Custom theme in themes/merino-dark, matched to nvim (github-nvim-theme) and herdr.
 # Ghostty's bundled "Atom One Dark" uses a different background (#21252b).
-theme = one-dark
+theme = merino-dark
 font-size = 16
 
 # Claude Code: Shift+Enter inserts a newline instead of submitting the prompt.

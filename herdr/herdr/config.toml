@@ -5,9 +5,30 @@
 onboarding = false
 
 [theme]
-name = "one-dark"
+name = "terminal"
 
 auto_switch = false
+
+[theme.custom]
+panel_bg = "#0d1117"
+sidebar_bg = "#010409"
+active_row_bg = "#161b22"
+selection_bg = "#1f3a5f"
+surface0 = "#161b22"
+surface1 = "#21262d"
+surface_dim = "#010409"
+overlay0 = "#484f58"
+overlay1 = "#6e7681"
+text = "#e6edf3"
+subtext0 = "#b1bac4"
+accent = "#58a6ff"
+blue = "#58a6ff"
+green = "#3fb950"
+yellow = "#d29922"
+red = "#ff7b72"
+mauve = "#bc8cff"
+teal = "#39c5cf"
+peach = "#ffa198"
 [keys]
 # Navigate spaces with j/k in the workspace picker (prefix+w), like tmux's session view.
 # j/k are freed from pane up/down so spaces win unambiguously; panes still move with h/l (and arrows).

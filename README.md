@@ -46,11 +46,10 @@ stow -t ~/Library/Application\ Support lazygit
 > `session.json`) live alongside it in `~/.config/herdr` and are left untouched
 > by stow.
 >
-> **One Dark palette.** Three packages theme themselves independently and must be
-> kept in sync: `nvim` (onedarkpro.nvim `onedark`), `herdr` (`[theme] name = "one-dark"`)
-> and `ghostty` (`themes/one-dark`, a local theme — the bundled *Atom One Dark* uses
-> Atom's gutter shade `#21252b` instead of the editor background `#282c34`). The
-> shared values are `bg #282c34`, `fg #abb2bf`, `gray #5c6370`, `selection #414858`.
+> **Merino Dark palette** (from Rex Beta). Three packages theme themselves independently and must be
+> kept in sync: `nvim` (github-nvim-theme `github_dark_default`), `herdr` (`[theme.custom]`)
+> and `ghostty` (`themes/merino-dark`, a local theme). The shared values are
+> `bg #0d1117`, `fg #e6edf3`, `gray #484f58`, `accent #58a6ff`.
 >
 > `GITLAB_HOST` is exported in `~/.zshrc` alongside `GITLAB_TOKEN` so `glab`
 > defaults to the self-hosted `code.pan.run` instance. Note that `GITLAB_TOKEN`
